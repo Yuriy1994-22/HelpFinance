@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кредиты и ипотека | Официальные банки-партнеры</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', 'Roboto', sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* ШАПКА */
+        .header { background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .logo { font-size: 28px; font-weight: 700; color: #2563eb; background: linear-gradient(90deg, #2563eb, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav a { margin-left: 30px; text-decoration: none; color: #4b5563; font-weight: 500; transition: color 0.3s; }
+        .nav a:hover { color: #2563eb; }
+        .btn-telegram { background: #0088cc; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
+        .btn-telegram:hover { background: #0077b3; }
+        
+        /* ГЛАВНЫЙ ЭКРАН */
+        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: white; padding: 180px 0 100px; margin-top: 80px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover; opacity: 0.15; }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .hero-title { font-size: 48px; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+        .hero-subtitle { font-size: 20px; opacity: 0.9; margin-bottom: 40px; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+        .btn { padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s; min-width: 200px; }
+        .btn-primary { background: white; color: #2563eb; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.15); color: white; border: 2px solid rgba(255, 255, 255, 0.3); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-3px); }
+        .hero-features { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 16px; }
+        .hero-features span { display: flex; align-items: center; gap: 8px; }
+        
+        /* БЛОК КРЕДИТОВ */
+        .section { padding: 100px 0; }
+        .section-title { font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 50px; color: #1f2937; }
+        .credit-section { background: white; }
+        .credit-card { max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; padding: 50px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .credit-image { border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        .credit-image img { width: 100%; height: auto; display: block; }
+        .credit-content ul { list-style: none; margin: 25px 0; }
+        .credit-content li { padding: 12px 0; border-bottom: 1px solid #f3f4f6; display: flex; align-items: center; gap: 12px; }
+        .credit-content li i { color: #10b981; font-size: 18px; }
+        
+        /* КНОПКИ БАНКОВ */
+        .bank-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
+        .btn-bank { background: linear-gradient(90deg, #2563eb, #3b82f6); color: white; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s; text-align: center; }
+        .btn-bank:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
+        
+        /* БЛОК ИПОТЕКИ */
+        .mortgage-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .mortgage-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .mortgage-badge {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .mortgage-content h3 {
+            font-size: 28px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .mortgage-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .feature i {
+            font-size: 24px;
+            color: #3b82f6;
+            background: #dbeafe;
+            width: 50px;
+            height: 50px;
+            display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+        }
+
+        .feature strong {
+            display: block;
+            color: #1f2937;
+        }
+
+        .feature small {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .mortgage-advantages {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        .mortgage-advantages p {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-mortgage {
+            background: linear-gradient(90deg, #ef4444, #f97316);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .btn-mortgage:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.4);
+        }
+
+        .mortgage-note {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .mortgage-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .mortgage-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* БЛОК ДЛЯ БИЗНЕСА (ВМЕСТО ЗАЙМОВ) */
+        .business-section { 
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%); 
+            color: white; 
+        }
+        .business-card { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: rgba(255, 255, 255, 0.95); 
+            color: #333;
+            border-radius: 20px; 
+            padding: 50px; 
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); 
+            text-align: center; 
+        }
+        .business-list { 
+            text-align: left; 
+            margin: 25px 0; 
+        }
+        .business-list li { 
+            padding: 10px 0; 
+            border-bottom: 1px solid #e5e7eb; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        .business-list li i { 
+            color: #10b981; 
+        }
+        .btn-business { 
+            background: linear-gradient(90deg, #0f766e, #14b8a6); 
+            color: white; 
+            padding: 18px 40px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 18px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            transition: all 0.3s; 
+            box-shadow: 0 10px 25px rgba(15, 118, 110, 0.3); 
+        }
+        .btn-business:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 30px rgba(15, 118, 110, 0.4); 
+        }
+        
+        /* БЛОК "ПОЧЕМУ МЫ" */
+        .why-section { background: white; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .why-card { background: #f8fafc; padding: 30px; border-radius: 16px; text-align: center; transition: transform 0.3s; border: 1px solid #e5e7eb; }
+        .why-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .why-icon { font-size: 40px; color: #2563eb; margin-bottom: 20px; background: #dbeafe; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 20px; }
+        .why-card h3 { font-size: 20px; margin-bottom: 15px; color: #1f2937; }
+        .why-card p { color: #6b7280; line-height: 1.6; }
+        
+        /* БЛОК ОТЗЫВОВ */
+        .reviews-section { background: #f8fafc; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .review-card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; border: 1px solid #e5e7eb; }
+        .review-header { display: flex; align-items: center; margin-bottom: 20px; }
+        .review-avatar { width: 60px; height: 60px; border-radius: 50%; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #2563eb; font-weight: bold; margin-right: 15px; }
+        .review-info h4 { font-size: 18px; margin-bottom: 5px; color: #1f2937; }
+        .review-info p { color: #6b7280; font-size: 14px; }
+        .review-stars { color: #fbbf24; margin-top: 5px; }
+        .review-text { color: #4b5563; line-height: 1.6; font-style: italic; position: relative; padding-left: 20px; }
+        .review-text:before { content: "“"; font-size: 60px; color: #dbeafe; position: absolute; left: -10px; top: -20px; font-family: serif; }
+        
+        /* ФУТЕР (без телефона) */
+        .footer { background: #1f2937; color: white; padding: 50px 0 30px; text-align: center; }
+        .footer-links { margin: 30px 0; }
+        .footer-links a { color: #d1d5db; margin: 0 15px; text-decoration: none; }
+        .footer-links a:hover { color: white; }
+        
+        /* АДАПТИВ */
+        @media (max-width: 992px) {
+            .mortgage-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .mortgage-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .mortgage-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 36px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
+            .credit-card { grid-template-columns: 1fr; padding: 30px; }
+            .nav { display: none; }
+            .header-inner { justify-content: space-between; }
+            .bank-buttons { grid-template-columns: 1fr; }
+            .why-grid, .reviews-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ШАПКА С ОБНОВЛЕННОЙ НАВИГАЦИЕЙ -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">FinHelp</div>
+                <nav class="nav">
+                    <a href="#credit">Кредиты</a>
+                    <a href="#mortgage">Ипотека</a>
+                    <a href="#business">Для бизнеса</a>
+                    <a href="#why">Почему мы</a>
+                    <a href="#reviews">Отзывы</a>
+                </nav>
+                <a href="https://t.me/yatoms" class="btn-telegram" target="_blank">
+                    <i class="fab fa-telegram"></i> Наш Telegram
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Кредиты и ипотека от 4,5% годовых. Одобрение за 1 день.</h1>
+                <p class="hero-subtitle">Кредиты для физических лиц и ипотека с государственной поддержкой. Официальные банки-партнеры.</p>
+                <div class="hero-buttons">
+                    <a href="#credit" class="btn btn-primary">
+                        <i class="fas fa-university"></i> Получить кредит
+                    </a>
+                    <a href="#mortgage" class="btn btn-secondary">
+                        <i class="fas fa-home"></i> Ипотека от 4,5%
+                    </a>
+                </div>
+                <div class="hero-features">
+                    <span><i class="fas fa-check-circle"></i> Ставки от 4,5%</span>
+                    <span><i class="fas fa-check-circle"></i> Одобрение с любой КИ</span>
+                    <span><i class="fas fa-check-circle"></i> Без скрытых комиссий</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК КРЕДИТОВ С 4 БАНКАМИ -->
+    <section id="credit" class="section credit-section">
+        <div class="container">
+            <h2 class="section-title">Кредит наличными или кредитная карта. Выгодные условия.</h2>
+            <div class="credit-card">
+                <div class="credit-image">
+                    <img src="https://images.pexels.com/photos/6332374/pexels-photo-6332374.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Кредит для физических лиц" loading="lazy">
+                </div>
+                <div class="credit-content">
+                    <p>Для крупных покупок, ремонта, обучения или других целей. Выберите банк:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> <strong>Кредит наличными:</strong> от 100 000 до 5 000 000 ₽</li>
+                        <li><i class="fas fa-check"></i> <strong>Кредитная карта:</strong> лимит до 500 000 ₽, льготный период до 120 дней</li>
+                        <li><i class="fas fa-check"></i> <strong>Решение онлайн</strong> — без визитов в банк</li>
+                        <li><i class="fas fa-check"></i> <strong>Ставки от 5,9%</strong> годовых</li>
+                        <li><i class="fas fa-check"></i> <strong>Бесплатное оформление</strong> и доставка карты курьером</li>
+                        <li><i class="fas fa-check"></i> <strong>Досрочное погашение</strong> без штрафов</li>
+                    </ul>
+                    
+                    <div class="bank-buttons">
+                        <a href="https://pxl.leads.su/click/55e28e65a0c278868abd752f2dfcfaf8?erid=2W5zFJmkPSg" 
+                           class="btn-bank" target="_blank">
+                            <i class="fas fa-university"></i> Банк Синара
+                        </a>
+                        
+                        <a href="https://pxl.leads.su/click/cea001150ced570624eb725009756fd9?erid=2W5zFGXGbxk" 
+                           class="btn-bank" target="_blank">
+                            <i class="fas fa-university"></i> Банк Зенит
+                        </a>
+                        
+                        <a href="https://pxl.leads.su/click/3febf2fb1feddd065f5d97d3cccb4116?erid=2W5zFGTKm9r" 
+                           class="btn-bank" target="_blank">
+                            <i class="fas fa-university"></i> Банк Барс
+                        </a>
+                        
+                        <a href="https://pxl.leads.su/click/b451f515bac18fdfdbdc65c3663cc4e8?erid=2W5zFGNqR2x" 
+                           class="btn-bank" target="_blank">
+                            <i class="fas fa-university"></i> Совкомбанк
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК ИПОТЕКИ -->
+    <section id="mortgage" class="section mortgage-section">
+        <div class="container">
+            <h2 class="section-title">Ипотека от 4,9%. Первоначальный взнос от 15%</h2>
+            <div class="mortgage-card">
+                <div class="mortgage-content">
+                    <div class="mortgage-badge">
+                        <span class="badge">Акция</span>
+                        <span class="badge">С государственной поддержкой</span>
+                    </div>
+                    
+                    <h3>Ипотека от Альфа-Банка с выгодной ставкой</h3>
+                    <p>Одобрение ипотеки за 1 день. Рассмотрение онлайн без визита в банк.</p>
+                    
+                    <div class="mortgage-features">
+                        <div class="feature">
+                            <i class="fas fa-percentage"></i>
+                            <div>
+                                <strong>Ставка от 4,9%</strong>
+                                <small>С господдержкой</small>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-home"></i>
+                            <div>
+                                <strong>Первоначальный взнос от 15%</strong>
+                                <small>Можно использовать маткапитал</small>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>Срок до 30 лет</strong>
+                                <small>Досрочное погашение без штрафов</small>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruble-sign"></i>
+                            <div>
+                                <strong>Сумма до 120 млн ₽</strong>
+                                <small>На готовое и строящееся жильё</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mortgage-advantages">
+                        <p><i class="fas fa-check-circle" style="color:#10b981;"></i> Одобрение с двумя документами</p>
+                        <p><i class="fas fa-check-circle" style="color:#10b981;"></i> Бесплатная онлайн-заявка</p>
+                        <p><i class="fas fa-check-circle" style="color:#10b981;"></i> Скидка на страховку при оформлении через сайт</p>
+                    </div>
+                    
+                    <a href="https://pxl.leads.su/click/87c7d7de0a2d0774e3537544c7593269?erid=2W5zFGupUnC" 
+                       class="btn-mortgage" target="_blank">
+                        <i class="fas fa-home"></i> Рассчитать ипотеку
+                    </a>
+                    
+                    <p class="mortgage-note">
+                        <small>Ставка зависит от условий программы, объекта недвижимости и вашей кредитной истории. Предложение не является офертой.</small>
+                    </p>
+                </div>
+                
+                <div class="mortgage-image">
+                    <img src="https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Ипотека на квартиру" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК ДЛЯ БИЗНЕСА (вместо займов) -->
+    <section id="business" class="section business-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Кредитование для бизнеса (ИП и ООО)</h2>
+            <div class="business-card">
+                <p>Финансирование для развития и поддержки вашего бизнеса:</p>
+                <ul class="business-list">
+                    <li><i class="fas fa-check"></i> <strong>Кредиты под оборот:</strong> от 500 000 до 50 000 000 ₽</li>
+                    <li><i class="fas fa-check"></i> <strong>Рефинансирование бизнес-кредитов:</strong> снижение ставки</li>
+                    <li><i class="fas fa-check"></i> <strong>Экспресс-кредиты:</strong> решение за 1-2 дня</li>
+                    <li><i class="fas fa-check"></i> <strong>Льготное кредитование:</strong> программы господдержки</li>
+                    <li><i class="fas fa-check"></i> <strong>Овердрафт:</strong> для текущих расходов</li>
+                </ul>
+                
+                <p style="margin: 20px 0; color: #4b5563;">
+                    <strong>Партнер платформы JetLend — кредитование для малого и среднего бизнеса.</strong><br>
+                    Более 15 банков и инвесторов на одной платформе. Рассмотрение от 1 дня.
+                </p>
+                
+                <a href="https://jetlend.ru/borrower/?utm_source=site&utm_medium=referral&utm_content=B1273107" 
+                   class="btn-business" target="_blank">
+                    <i class="fas fa-briefcase"></i> Получить кредит для бизнеса
+                </a>
+                
+                <p style="margin-top: 20px; color: #6b7280; font-size: 14px;">
+                    <small>Ставки от 8% годовых. Требуется действующий бизнес не менее 6 месяцев.</small>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК "ПОЧЕМУ МЫ" -->
+    <section id="why" class="section why-section">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Работаем с проверенными банками</h3>
+                    <p>Только банки с лицензией ЦБ РФ. Вы получаете деньги напрямую от финансовой организации.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Скорость оформления</h3>
+                    <p>Большинство заявок одобряются за 1-2 дня. Без сложных анкет и долгих проверок.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Прозрачные условия</h3>
+                    <p>Вы платите только то, что видите при оформлении. Мы зарабатываем на партнёрских бонусах, а не на вас.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Полная конфиденциальность</h3>
+                    <p>Ваши данные защищены. Не передаём третьим лицам и не звоним с назойливыми предложениями.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК ОТЗЫВОВ -->
+    <section id="reviews" class="section reviews-section">
+        <div class="container">
+            <h2 class="section-title">Что говорят наши клиенты</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">АК</div>
+                        <div class="review-info">
+                            <h4>Александр К.</h4>
+                            <p>Оформил кредит 500 000 ₽</p>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text">Нужны были деньги на ремонт квартиры. Думал, что с моей кредитной историей не одобрят, но ребята нашли банк, который дал 500 тысяч под 8,9%. Всё онлайн, без визитов. Спасибо!</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">МС</div>
+                        <div class="review-info">
+                            <h4>Марина С.</h4>
+                            <p>Получила ипотеку 4,9%</p>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text">Обращалась за ипотекой. Дали самую низкую ставку по рынку — 4,9%! Помогли собрать документы, всё объяснили. Квартиру уже купили, переехали. Очень благодарна за помощь.</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">ИП</div>
+                        <div class="review-info">
+                            <h4>Иван Петров</h4>
+                            <p>Кредит для ИП через JetLend</p>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text">Как индивидуальный предприниматель получил кредит 1,5 млн рублей на развитие через платформу JetLend. Рассмотрение заняло 2 дня, деньги пришли сразу. Удобно, что не нужно обходить десятки банков — все заявки в одном месте.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР (без телефона) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo" style="-webkit-text-fill-color: white; background: none;">FinHelp</div>
+            <p>Сервис подбора кредитов и ипотеки для физических лиц и бизнеса</p>
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Соглашение</a>
+                <a href="https://t.me/yatoms">Telegram-консультант</a>
+                <a href="mailto:help@finhelp.ru">Почта для связи</a>
+            </div>
+            <p style="color: #9ca3af; margin-top: 30px; font-size: 14px;">
+                © 2025 FinHelp. Мы не являемся банком или МФО. Мы — сервис подбора финансовых услуг.<br>
+                Все решения о выдаче кредитов принимают банки-партнёры.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
