@@ -36,7 +36,7 @@
         .btn-telegram { background: #0088cc; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
         .btn-telegram:hover { background: #0077b3; }
         
-        /* ГЛАВНЫЙ ЭКРАН */
+        /* ГЛАВНЫЙ ЭКРАН - убираем фоновое изображение */
         .hero { 
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); 
             color: white; 
@@ -46,6 +46,7 @@
             position: relative; 
             overflow: hidden; 
         }
+        /* Вместо фонового изображения создаем геометрический узор */
         .hero::before { 
             content: ''; 
             position: absolute; 
@@ -53,8 +54,11 @@
             left: 0; 
             right: 0; 
             bottom: 0; 
-            background: url('https://avatars.mds.yandex.net/i?id=3d3d96f128877bb0cbf0fd571b88c01e-4274493-images-thumbs&n=13') center/cover no-repeat; 
-            opacity: 0.15; 
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            opacity: 0.5; 
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
         .hero-title { font-size: 48px; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
@@ -68,13 +72,47 @@
         .hero-features { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 16px; }
         .hero-features span { display: flex; align-items: center; gap: 8px; }
         
-        /* БЛОК КРЕДИТОВ */
+        /* БЛОК КРЕДИТОВ - создаем графическое представление */
         .section { padding: 100px 0; }
         .section-title { font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 50px; color: #1f2937; }
         .credit-section { background: white; }
         .credit-card { max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; padding: 50px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .credit-image { border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); height: 100%; min-height: 300px; background: #f1f5f9; }
-        .credit-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .credit-image { 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); 
+            height: 100%; 
+            min-height: 300px; 
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+            text-align: center;
+        }
+        .credit-icon {
+            font-size: 80px;
+            color: #2563eb;
+            margin-bottom: 20px;
+            background: white;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+        }
+        .credit-image h3 {
+            color: #1e3a8a;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .credit-image p {
+            color: #4b5563;
+            font-size: 16px;
+        }
         .credit-content ul { list-style: none; margin: 25px 0; }
         .credit-content li { padding: 12px 0; border-bottom: 1px solid #f3f4f6; display: flex; align-items: center; gap: 12px; }
         .credit-content li i { color: #10b981; font-size: 18px; }
@@ -211,14 +249,38 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             height: 100%;
             min-height: 400px;
-            background: #f1f5f9;
+            background: linear-gradient(135deg, #fecaca 0%, #fed7d7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+            text-align: center;
         }
 
-        .mortgage-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .mortgage-icon {
+            font-size: 80px;
+            color: #dc2626;
+            margin-bottom: 20px;
+            background: white;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
+        }
+
+        .mortgage-image h3 {
+            color: #7f1d1d;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .mortgage-image p {
+            color: #4b5563;
+            font-size: 16px;
         }
 
         /* БЛОК ДЛЯ БИЗНЕСА (ВМЕСТО ЗАЙМОВ) */
@@ -321,6 +383,17 @@
             .header-inner { justify-content: space-between; }
             .bank-buttons { grid-template-columns: 1fr; }
             .why-grid, .reviews-grid { grid-template-columns: 1fr; }
+            
+            .credit-image, .mortgage-image {
+                min-height: 250px;
+                padding: 20px;
+            }
+            
+            .credit-icon, .mortgage-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 50px;
+            }
         }
     </style>
 </head>
@@ -374,8 +447,11 @@
             <h2 class="section-title">Кредит наличными или кредитная карта. Выгодные условия.</h2>
             <div class="credit-card">
                 <div class="credit-image">
-                    <img src="https://avatars.mds.yandex.net/i?id=269d8241b25671ad663bce48b6a8c07c-5872366-images-thumbs&n=13" 
-                         alt="Кредит для физических лиц" loading="lazy">
+                    <div class="credit-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Деньги на любые цели</h3>
+                    <p>Быстрое одобрение без визита в банк</p>
                 </div>
                 <div class="credit-content">
                     <p>Для крупных покупок, ремонта, обучения или других целей. Выберите банк:</p>
@@ -476,8 +552,11 @@
                 </div>
                 
                 <div class="mortgage-image">
-                    <img src="https://avatars.mds.yandex.net/i?id=674edf1384f62a15ea0ec3c5baad045b-5482076-images-thumbs&n=13" 
-                         alt="Ипотека на квартиру" loading="lazy">
+                    <div class="mortgage-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Мечта о собственном жилье</h3>
+                    <p>Низкие ставки, длительный срок, помощь в оформлении</p>
                 </div>
             </div>
         </div>
